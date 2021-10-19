@@ -5,7 +5,12 @@ import { useGlobalContext } from '../context/userContext'
 import { PlusOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { addUser, openAddDialog, closeDialog } from '../redux/slices/userSlice'
+import {
+	addUser,
+	openAddDialog,
+	closeDialog,
+	editUser,
+} from '../redux/slices/userSlice'
 import { v4 as uuidv4 } from 'uuid'
 import UserTable from '../components/UserTable'
 const Home = () => {
@@ -39,15 +44,7 @@ const Home = () => {
 	return (
 		<section>
 			<Navbar />
-
-			{users &&
-				users.map((user, index) => {
-					return (
-						<h1 key={index} id='title'>
-							Welcome {user.firstName} {user.lastName}
-						</h1>
-					)
-				})}
+			<h1>Welcome{}</h1>
 
 			<Button onClick={() => dispatch(openAddDialog())}>
 				<PlusOutlined />
@@ -80,7 +77,7 @@ const Home = () => {
 								role,
 								designation,
 							}
-							console.log(editedUser)
+							dispatch(editUser(editedUser))
 						}
 					}}
 				>
@@ -121,7 +118,7 @@ const Home = () => {
 						rules={[
 							{
 								required: true,
-								message: 'Please input post!',
+								message: 'Please input designation!',
 							},
 						]}
 					>

@@ -1,11 +1,12 @@
 import { Button, TextField } from '@material-ui/core'
 import { Field, Form, Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 import Loading from '../components/Loading'
 import { useGlobalContext } from '../context/userContext'
 import { v4 as uuidv4 } from 'uuid'
+import { createTrue } from 'typescript'
 
 const validationSchema = Yup.object().shape({
 	firstName: Yup.string()
@@ -18,25 +19,45 @@ const validationSchema = Yup.object().shape({
 		.required('Required'),
 	email: Yup.string().email().required('Required'),
 	mobileNo: Yup.string().max(10).required('Required'),
-	password: Yup.string().required('Required'),
-	confirmPassword: Yup.string().required('Required'),
+	password: Yup.string()
+		.required('Required')
+		.min(4, 'Must be at least 4 characters'),
+	confirmPassword: Yup.string()
+		.required('Required')
+		.oneOf(
+			[Yup.ref('password')],
+			'Password and Repeat Password  does not match'
+		),
 })
 const Register = () => {
-	const { addUser, setLoading, loading } = useGlobalContext()
+	const { addUser, setLoading, loading, users } = useGlobalContext()
 	let history = useHistory()
+	const [alert, setAlert] = useState(false)
 
 	const handleRegistration = (data) => {
 		try {
 			setLoading(true)
 			const updatedData = { ...data, id: uuidv4() }
 			console.log(updatedData)
-			addUser(updatedData)
-			history.push('/home')
+			const ifUserExists = users.filter((user) => {
+				return user.email === data.email
+			})
+
+			if (ifUserExists) {
+				setAlert(createTrue)
+			} else {
+				addUser(updatedData)
+				history.push('/home')
+			}
 		} catch (error) {
 			console.log(error)
 		} finally {
 			setLoading(false)
 		}
+	}
+
+	if (loading) {
+		return <div>Loading...</div>
 	}
 	return (
 		<div className='register'>
@@ -55,6 +76,11 @@ const Register = () => {
 				{({ errors, touched }) => (
 					<Form className='form'>
 						<h1> Register</h1>
+						{alert && (
+							<div className='register-fail-alert'>
+								User with given email already exists
+							</div>
+						)}
 						<div className='form-wrap'>
 							<div className='form-control'>
 								<Field

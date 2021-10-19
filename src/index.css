@@ -91,7 +91,7 @@ ul {
 	margin-top: 1rem;
 }
 .table {
-	padding: 1rem;
+	padding: 5rem;
 }
 td,
 th {
@@ -104,7 +104,8 @@ th {
 	text-transform: capitalize;
 }
 
-.login-fail-alert {
+.login-fail-alert,
+.register-fail-alert {
 	color: rgb(224, 70, 70);
 	padding: 0.5rem;
 	margin-bottom: 2rem;
@@ -112,6 +113,13 @@ th {
 	border-radius: 5px;
 	font-size: 1.2rem;
 }
+
+.table-btn {
+	border: none;
+	cursor: pointer;
+	background-color: white;
+}
+
 footer {
 	position: relative;
 	width: 100%;

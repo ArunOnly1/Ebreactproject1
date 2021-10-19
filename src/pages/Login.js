@@ -42,7 +42,7 @@ const Login = () => {
 			<div className='login'>
 				{alert && (
 					<div className='login-fail-alert'>
-						User with the given credentials does not exist.
+						User with the given credentials does not exist
 					</div>
 				)}
 				<Formik

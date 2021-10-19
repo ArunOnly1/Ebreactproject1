@@ -60,14 +60,33 @@ const userSlice = createSlice({
 			const id = action.payload
 			console.log('id is', id)
 			const userToEdit = state.users.findIndex((user) => user.id === id)
-
 			console.log(userToEdit)
+
+			const { username, role, designation } = state.users[userToEdit]
 			state.formValue = {
 				id,
-				username: 'Ram',
-				role: 'Admin',
-				designation: 'Developer',
+				username,
+				role,
+				designation,
 			}
+		},
+		editUser: (state, action) => {
+			// This is one way
+			// const {id} = action.payload
+			// const findIndex = state.users.findIndex((user) => user.id === id)
+			// state.users[findIndex] = action.payload
+
+			// Another way
+			const editedUser = action.payload
+			const newUserList = state.users.map((user) => {
+				if (editedUser.id === user.id) {
+					return editedUser
+				}
+				return user
+			})
+
+			state.users = newUserList
+			state.showDialog = false
 		},
 	},
 })
@@ -78,6 +97,7 @@ export const {
 	closeDialog,
 	deleteUser,
 	openEditDialog,
+	editUser,
 } = userSlice.actions
 
 export default userSlice.reducer
