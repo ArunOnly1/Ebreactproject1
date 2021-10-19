@@ -44,7 +44,7 @@ const Register = () => {
 			})
 
 			if (ifUserExists) {
-				setAlert(createTrue)
+				setAlert(true)
 			} else {
 				addUser(updatedData)
 				history.push('/home')
