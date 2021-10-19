@@ -43,7 +43,7 @@ const Register = () => {
 				return user.email === data.email
 			})
 
-			if (ifUserExists) {
+			if (ifUserExists.length === 1) {
 				setAlert(true)
 			} else {
 				addUser(updatedData)
