@@ -17,7 +17,6 @@ const userSlice = createSlice({
 	reducers: {
 		addUser: (state, action) => {
 			state.users = [...state.users, action.payload]
-			console.log('all users', state.users)
 			state.showDialog = false
 			notification.success({
 				message: 'User added!',
@@ -59,6 +58,12 @@ const userSlice = createSlice({
 			state.showDialog = true
 			const id = action.payload
 			console.log('id is', id)
+
+			// Here I tried to use filter instead of findIndex
+			const grabUser = state.users.filter((user) => user.id === id)
+			console.log('grabuser', grabUser)
+
+			// Using findIndex its working
 			const userToEdit = state.users.findIndex((user) => user.id === id)
 			console.log(userToEdit)
 

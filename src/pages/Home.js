@@ -1,7 +1,6 @@
 import { Button, Input, Modal, Form, Select } from 'antd'
-import React, { useState } from 'react'
-import Navbar from '../components/Navbar'
-import { useGlobalContext } from '../context/userContext'
+import React from 'react'
+import Navbar from '../components/Navbar.jsx'
 import { PlusOutlined } from '@ant-design/icons'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -13,24 +12,12 @@ import {
 } from '../redux/slices/userSlice'
 import { v4 as uuidv4 } from 'uuid'
 import UserTable from '../components/UserTable'
-const Home = () => {
-	const { getUser } = useGlobalContext()
-	const [users, setUsers] = useState([])
 
+const Home = () => {
 	// redux
 	const { showDialog, mode, formValue } = useSelector((state) => state.user)
 
 	const dispatch = useDispatch()
-
-	const retrievingUser = () => {
-		const users = getUser()
-		// console.log(users)
-		setUsers(users)
-	}
-
-	React.useEffect(() => {
-		retrievingUser()
-	}, [])
 
 	// Form instance
 	const [form] = Form.useForm()
@@ -41,14 +28,22 @@ const Home = () => {
 
 	const { Option } = Select
 
+	// Fetching logged in user from localStorage
+	const loggedInUser = JSON.parse(localStorage.getItem('loggedUser'))
+	const { firstName, lastName } = loggedInUser[0]
 	return (
 		<section>
 			<Navbar />
-			<h1>Welcome{}</h1>
+			<h1 style={{ marginTop: '2rem', fontSize: '2rem' }}>
+				Welcome {firstName} {lastName}
+			</h1>
 
-			<Button onClick={() => dispatch(openAddDialog())}>
+			<Button
+				style={{ marginTop: '1rem' }}
+				onClick={() => dispatch(openAddDialog())}
+			>
 				<PlusOutlined />
-				Add user
+				Add User
 			</Button>
 
 			<Modal
@@ -57,6 +52,7 @@ const Home = () => {
 				footer={null}
 				onCancel={() => dispatch(closeDialog())}
 				afterClose={() => form.resetFields()}
+				getContainer={false}
 			>
 				<Form
 					form={form}

@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from 'react'
+import { visibleGridRowsStateSelector } from '@mui/x-data-grid'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const UserContext = createContext()
 
@@ -8,7 +9,7 @@ const UserProvider = ({ children }) => {
 
 	// user registration
 	const addUser = (newUser) => {
-		const allUser = [newUser, ...users]
+		const allUser = [...users, newUser]
 
 		setUsers(allUser)
 		console.log('allusers', allUser)
@@ -19,9 +20,21 @@ const UserProvider = ({ children }) => {
 		const data = JSON.parse(localStorage.getItem('allUser'))
 		return data
 	}
+
+	useEffect(() => {
+		const data = getUser()
+		setUsers(data)
+	}, [])
+
 	return (
 		<UserContext.Provider
-			value={{ addUser, users, loading, setLoading, getUser }}
+			value={{
+				addUser,
+				users,
+				loading,
+				setLoading,
+				getUser,
+			}}
 		>
 			{children}
 		</UserContext.Provider>

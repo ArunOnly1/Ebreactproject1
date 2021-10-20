@@ -1,5 +1,4 @@
 import { Button, CircularProgress, TextField } from '@material-ui/core'
-import { notification } from 'antd'
 import { Field, Form, Formik } from 'formik'
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
@@ -14,7 +13,7 @@ const Login = () => {
 	const { getUser, loading, setLoading } = useGlobalContext()
 	const [alert, setAlert] = useState(false)
 	const users = getUser()
-	console.log('users', users)
+	// console.log('users', users)
 	let { push } = useHistory()
 
 	const handleLogin = (data) => {
@@ -25,7 +24,8 @@ const Login = () => {
 				(user) => user.email === email && user.password === password
 			)
 			if (matchUser.length === 1) {
-				console.log(matchUser)
+				// console.log(matchUser)
+				localStorage.setItem('loggedUser', JSON.stringify(matchUser))
 				return push('/home')
 			} else {
 				setAlert(true)
