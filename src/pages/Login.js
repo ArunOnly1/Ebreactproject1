@@ -10,7 +10,7 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string().required('Required'),
 })
 const Login = () => {
-	const { getUser, loading, setLoading, users } = useGlobalContext()
+	const { loading, setLoading, users } = useGlobalContext()
 	const [alert, setAlert] = useState(false)
 
 	// console.log('users', users)
