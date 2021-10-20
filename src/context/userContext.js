@@ -13,7 +13,7 @@ const UserProvider = ({ children }) => {
 		const allUser = [...users, newUser]
 
 		setUsers(allUser)
-		console.log('allusers', allUser)
+		// console.log('allusers', allUser)
 		localStorage.setItem('allUser', JSON.stringify(allUser))
 	}
 

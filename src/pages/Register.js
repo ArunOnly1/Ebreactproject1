@@ -37,7 +37,6 @@ const Register = () => {
 		try {
 			setLoading(true)
 			const updatedData = { ...data, id: uuidv4() }
-			console.log(updatedData)
 
 			const ifUserExists = users.filter((user) => {
 				return user.email === data.email
