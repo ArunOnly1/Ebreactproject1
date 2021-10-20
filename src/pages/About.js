@@ -5,10 +5,8 @@ import { useGlobalContext } from '../context/userContext'
 import Footer from '../components/Footer.jsx'
 
 const About = () => {
-	const { getUser } = useGlobalContext()
-	const users = getUser()
-	console.log(getUser())
-	console.log('about users', users)
+	const { users } = useGlobalContext()
+
 	return (
 		<main>
 			<Navbar />

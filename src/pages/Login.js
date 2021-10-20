@@ -10,9 +10,9 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string().required('Required'),
 })
 const Login = () => {
-	const { getUser, loading, setLoading } = useGlobalContext()
+	const { getUser, loading, setLoading, users } = useGlobalContext()
 	const [alert, setAlert] = useState(false)
-	const users = getUser()
+
 	// console.log('users', users)
 	let { push } = useHistory()
 
@@ -25,7 +25,6 @@ const Login = () => {
 			)
 			if (matchUser.length === 1) {
 				// console.log(matchUser)
-				localStorage.setItem('loggedUser', JSON.stringify(matchUser))
 				return push('/home')
 			} else {
 				setAlert(true)

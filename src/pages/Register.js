@@ -38,11 +38,10 @@ const Register = () => {
 			setLoading(true)
 			const updatedData = { ...data, id: uuidv4() }
 			console.log(updatedData)
-			const ifUserExists =
-				users &&
-				users.filter((user) => {
-					return user.email === data.email
-				})
+
+			const ifUserExists = users.filter((user) => {
+				return user.email === data.email
+			})
 
 			if (ifUserExists.length === 1) {
 				setAlert(true)

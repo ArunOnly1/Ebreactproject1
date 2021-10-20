@@ -4,7 +4,9 @@ const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false)
-	const [users, setUsers] = useState([])
+	const [users, setUsers] = useState(
+		[] || JSON.parse(localStorage.getItem('allUsers'))
+	)
 
 	// user registration
 	const addUser = (newUser) => {
@@ -15,16 +17,6 @@ const UserProvider = ({ children }) => {
 		localStorage.setItem('allUser', JSON.stringify(allUser))
 	}
 
-	const getUser = () => {
-		const data = JSON.parse(localStorage.getItem('allUser'))
-		return data
-	}
-
-	useEffect(() => {
-		const data = getUser()
-		setUsers(data)
-	}, [])
-
 	return (
 		<UserContext.Provider
 			value={{
@@ -32,7 +24,6 @@ const UserProvider = ({ children }) => {
 				users,
 				loading,
 				setLoading,
-				getUser,
 			}}
 		>
 			{children}

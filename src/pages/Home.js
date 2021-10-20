@@ -29,15 +29,10 @@ const Home = () => {
 
 	const { Option } = Select
 
-	// Fetching logged in user from localStorage
-	const loggedInUser = JSON.parse(localStorage.getItem('loggedUser'))
-	const { firstName, lastName } = loggedInUser[0]
 	return (
 		<section>
 			<Navbar />
-			<h1 style={{ marginTop: '2rem', fontSize: '2rem' }}>
-				Welcome {firstName} {lastName}
-			</h1>
+			<h1 style={{ marginTop: '2rem', fontSize: '2rem' }}>Welcome</h1>
 
 			<Button
 				style={{ marginTop: '1rem' }}
