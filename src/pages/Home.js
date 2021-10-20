@@ -12,6 +12,7 @@ import {
 } from '../redux/slices/userSlice'
 import { v4 as uuidv4 } from 'uuid'
 import UserTable from '../components/UserTable'
+import Footer from '../components/Footer'
 
 const Home = () => {
 	// redux
@@ -141,6 +142,7 @@ const Home = () => {
 				</Form>
 			</Modal>
 			<UserTable />
+			<Footer />
 		</section>
 	)
 }

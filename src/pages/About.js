@@ -2,6 +2,7 @@ import { Card } from 'antd'
 import React from 'react'
 import Navbar from '../components/Navbar.jsx'
 import { useGlobalContext } from '../context/userContext'
+import Footer from '../components/Footer.jsx'
 
 const About = () => {
 	const { getUser } = useGlobalContext()
@@ -56,6 +57,7 @@ const About = () => {
 						)
 					})}
 			</div>
+			<Footer />
 		</main>
 	)
 }

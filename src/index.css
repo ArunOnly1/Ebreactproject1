@@ -139,22 +139,17 @@ th {
 .content:last-child {
 	background-color: #ffcc66;
 }
-footer {
-	position: relative;
+.footer {
+	position: absolute;
 	width: 100%;
-	background-color: rgb(12, 75, 51);
-	color: #fff;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
+	height: 40px;
+	background-color: rgb(25, 136, 94);
+	color: white;
+	bottom: 0;
 	font-size: 1rem;
-	padding: 0.5rem;
 }
-footer:nth-last-child() {
-	margin-left: 2rem;
-	color: red;
-}
-footer .eb {
+
+.footer .eb {
 	color: rgb(221, 205, 58);
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 }

@@ -1,4 +1,3 @@
-import { visibleGridRowsStateSelector } from '@mui/x-data-grid'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 const UserContext = createContext()

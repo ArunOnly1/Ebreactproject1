@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar.jsx'
-
+import Footer from '../components/Footer.jsx'
 const Contact = () => {
 	return (
 		<main style={{ background: '#d7d1e6', height: '100vh' }}>
@@ -19,6 +19,7 @@ const Contact = () => {
 					<p>Team Lead</p>
 				</div>
 			</div>
+			<Footer />
 		</main>
 	)
 }

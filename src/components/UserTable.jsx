@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Table, Space, Popconfirm, Button } from 'antd'
+import { Table, Space, Popconfirm } from 'antd'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { deleteUser, openEditDialog } from '../redux/slices/userSlice'
 const UserTable = () => {

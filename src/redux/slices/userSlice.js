@@ -59,13 +59,19 @@ const userSlice = createSlice({
 			const id = action.payload
 			console.log('id is', id)
 
-			// Here I tried to use filter instead of findIndex
-			const grabUser = state.users.filter((user) => user.id === id)
-			console.log('grabuser', grabUser)
+			// ?This functionality is not working and I Dont know why
+			// // Here I tried to use filter instead of findIndex
+			// const grabUser = state.users.filter((user) => {
+			// 	if (user.id === id) {
+			// 		console.log('id matched')
+			// 		return user
+			// 	}
+			// })
+			// console.log('grabuser', grabUser)
 
 			// Using findIndex its working
 			const userToEdit = state.users.findIndex((user) => user.id === id)
-			console.log(userToEdit)
+			console.log('userToEdit', userToEdit)
 
 			const { username, role, designation } = state.users[userToEdit]
 			state.formValue = {
