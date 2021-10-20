@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import Loading from '../components/Loading'
 import { useGlobalContext } from '../context/userContext'
 import { v4 as uuidv4 } from 'uuid'
-import { createTrue } from 'typescript'
 
 const validationSchema = Yup.object().shape({
 	firstName: Yup.string()

@@ -119,6 +119,9 @@ th {
 	cursor: pointer;
 	background-color: white;
 }
+.nav-btn {
+	color: white;
+}
 
 footer {
 	position: relative;
