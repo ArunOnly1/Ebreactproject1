@@ -5,7 +5,7 @@ const UserContext = createContext()
 const UserProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false)
 	const [users, setUsers] = useState(
-		[] || JSON.parse(localStorage.getItem('allUsers'))
+		JSON.parse(localStorage.getItem('allUsers')) || []
 	)
 
 	// user registration
