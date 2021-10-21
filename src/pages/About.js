@@ -19,7 +19,7 @@ const About = () => {
 			>
 				registered user's information
 			</h1>
-			<div style={{ display: 'flex', flex: '1', margin: '1rem 5rem' }}>
+			<div className='card-container'>
 				{users &&
 					users.map((user) => {
 						return (
@@ -39,7 +39,7 @@ const About = () => {
 									</div>
 								}
 								style={{
-									width: 300,
+									width: '20%',
 									margin: '2rem 3rem',
 									fontSize: '1rem',
 									border: 'none',
