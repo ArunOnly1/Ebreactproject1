@@ -68,6 +68,12 @@ const userSlice = createSlice({
 			// 	}
 			// })
 			// console.log('grabuser', grabUser)
+			// return
+			// [Proxy]
+
+			// what i initially did?
+			// const grabUser = state.users.filter((user)=>user.id===id)
+			// console.log(grabUser)
 
 			// Using findIndex its working
 			const userToEdit = state.users.findIndex((user) => user.id === id)
